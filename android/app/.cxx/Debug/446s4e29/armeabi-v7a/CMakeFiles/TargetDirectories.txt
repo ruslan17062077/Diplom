@@ -1,0 +1,2 @@
+C:/Users/Ruslan/source/Diplom/molokosbor/android/app/.cxx/Debug/446s4e29/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Ruslan/source/Diplom/molokosbor/android/app/.cxx/Debug/446s4e29/armeabi-v7a/CMakeFiles/rebuild_cache.dir
