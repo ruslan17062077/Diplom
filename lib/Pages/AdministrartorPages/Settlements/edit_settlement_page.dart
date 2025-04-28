@@ -71,7 +71,6 @@ class _EditSettlementPageState extends State<EditSettlementPage> {
 
   Future<void> _AddEditPage() async {
   final updated = await Navigator.pushNamed(context, '/add_drop_point', arguments: widget.settlement);
-    
     if (updated != null) {
        setState(() => dropPoints.add(updated as DropPoint) ) ;
     }

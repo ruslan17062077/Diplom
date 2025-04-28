@@ -158,7 +158,7 @@ class _ProfileClientPageState extends State<ProfileClientPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FutureBuilder<DateTime>(
-              future: DeliveryService().getNextDeliveryDate(user!.id),
+              future: DeliveryService().getNextDeliveryDate(user!.id!),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(
@@ -222,7 +222,7 @@ class _ProfileClientPageState extends State<ProfileClientPage> {
   String _formatDate(DateTime d) => '${d.day.toString().padLeft(2, '0')}.${d.month.toString().padLeft(2, '0')}.${d.year}';
 
   Future<void> _cancelDelivery() async {
-    await DeliveryService().cancelDelivery(clientId: user!.id, collectorId: user!.drop_point?.profile?.id, notes: 'Отменено пользователем');
+    await DeliveryService().cancelDelivery(clientId: user!.id!, collectorId: user!.drop_point?.profile?.id, notes: 'Отменено пользователем');
     setState(() {});
   }
 

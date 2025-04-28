@@ -6,7 +6,7 @@ import 'package:molokosbor/DataBase/models/settlements.dart';
 
 /// Модель профиля пользователя (таблица profiles)
 class Profile {
-  final String id;
+  final String? id;
   final String? first_name;
   final String name;
   final String? last_name;
@@ -17,7 +17,7 @@ class Profile {
   final DropPoint? drop_point;
   final List<Delivery?>? delivery;
   Profile({
-    required this.id,
+     this.id,
     this.first_name,
     required this.name,
     this.last_name,

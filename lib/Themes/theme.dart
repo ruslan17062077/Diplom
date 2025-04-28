@@ -147,7 +147,8 @@ ThemeData lightTheme = ThemeData(
   ),
   iconTheme: IconThemeData(color: Colors.black),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor:  const Color.fromARGB(255, 213, 209, 209),),
-  navigationBarTheme: NavigationBarThemeData(backgroundColor:  const Color.fromARGB(255, 213, 209, 209))
+  navigationBarTheme: NavigationBarThemeData(backgroundColor:  const Color.fromARGB(255, 213, 209, 209)),
+  
 );
 
 const typeThemelight = Typography.whiteMountainView;

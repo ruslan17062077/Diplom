@@ -30,7 +30,7 @@ class _CollectorDeliveryPageState extends State<CollectorDeliveryPage> {
 
   void _save() {
     if (_formKey.currentState!.validate()) {
-      final delivery = Delivery( clientId: widget.client.id, deliveryTime: DateTime.now(), volume: int.parse(_amountController.text), status: 'сдано', createdAt: DateTime.now());
+      final delivery = Delivery( clientId: widget.client.id!, deliveryTime: DateTime.now(), volume: int.parse(_amountController.text), status: 'сдано', createdAt: DateTime.now());
       DeliveryService().addDelivery(delivery);
       widget.client!.delivery!.add(delivery);
       Navigator.pop(context, widget.client);

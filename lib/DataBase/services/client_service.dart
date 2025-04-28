@@ -26,10 +26,37 @@ class ClientService {
   }
 
   Future<void> updateClient(Profile profile) async {
-    await supabase.from('profiles').update(profile.toJson()).eq('id', profile.id);
+    await supabase.from('profiles').update(profile.toJson()).eq('id', profile.id!);
   }
 
   Future<String> deleteClient(Profile profile) async{
     return "Удалено";
+  }
+  
+  Future<void> signUpClient(Profile _profile, String password) async {
+    final authResponse = await supabase.auth.admin.createUser(
+      AdminUserAttributes(email: _profile.email, password: password)
+    );
+    final newProfile = Profile(
+      id: authResponse.user!.id,
+      first_name: _profile.first_name,
+      name: _profile.name,
+      last_name: _profile.last_name,
+      email: _profile.email,
+      role: 'client',
+      phone: _profile.phone,
+      createdAt: DateTime.now(),
+    );
+    await supabase.from('profiles').insert({
+    'id': newProfile.id,
+    'first_name' : newProfile.first_name,
+    'name': newProfile.name,
+    'last_name': newProfile.last_name,
+    'email': newProfile.email,
+    'phone': newProfile.phone,
+    'role': 'client',
+    'created_at': newProfile.createdAt.toIso8601String(),
+    'drop_point_id': null, 
+  });
   }
 }

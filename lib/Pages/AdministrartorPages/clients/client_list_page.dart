@@ -112,20 +112,33 @@ class _ClientListPageState extends State<ClientListPage> {
       });
     }
   }
+   Future<void> _addClient() async {
+    final updated = await Navigator.pushNamed(
+      context,
+      '/add_client',
+    ) as Profile?;
+    if (updated != null) {
+      setState(() {
+        // Обновляем в обоих списках
+        _allClients.add(updated);
+        _applyFilter();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     // Показ прогресс-индикатора при загрузке
     if (_isLoading) {
       return Scaffold(
-        appBar: AppBar(title: Text('Список клиентов')),
+        appBar: AppBar(title: Text('Список клиентов'), actions: [IconButton(onPressed: (){_addClient();}, icon: Icon(Icons.add))],),
         body: Center(child: CircularProgressIndicator()),
       );
     }
     // Показ ошибки, если она есть
     if (_error != null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Список клиентов')),
+        appBar: AppBar(title: const Text('Список клиентов'),actions: [IconButton(onPressed: (){_addClient();}, icon: Icon(Icons.add))]),
         body: Center(child: Text('Ошибка: $_error')),
       );
     }
@@ -144,6 +157,7 @@ class _ClientListPageState extends State<ClientListPage> {
             tooltip: 'Сортировать по поселению',
             onPressed: _toggleSortOrder,
           ),
+        IconButton(onPressed: (){_addClient();}, icon: Icon(Icons.add))
         ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(56),
@@ -221,12 +235,7 @@ class _ClientListPageState extends State<ClientListPage> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // TODO: добавить логику создания нового клиента
-        },
-        child: const Icon(Icons.add),
-      ),
+      
     );
   }
 }
