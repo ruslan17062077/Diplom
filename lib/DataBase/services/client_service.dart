@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:molokosbor/DataBase/models/deliveries.dart';
 import 'package:molokosbor/DataBase/models/profiles.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -33,8 +34,12 @@ class ClientService {
     return "Удалено";
   }
   
-  Future<void> signUpClient(Profile _profile, String password) async {
-    final authResponse = await supabase.auth.admin.createUser(
+  Future<Profile> signUpClient(Profile _profile, String password) async {
+    final SupabaseClient _adminSupabase = SupabaseClient(
+    'https://ijfnwqionlzjgqvwgbdd.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlqZm53cWlvbmx6amdxdndnYmRkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0MzA3MTg1MywiZXhwIjoyMDU4NjQ3ODUzfQ.g8220Rr5nbxk-7D3ckfyNRr48dpv9Du29dSEs5YzdiE'
+  );
+    final authResponse = await _adminSupabase.auth.admin.createUser(
       AdminUserAttributes(email: _profile.email, password: password)
     );
     final newProfile = Profile(
@@ -58,5 +63,6 @@ class ClientService {
     'created_at': newProfile.createdAt.toIso8601String(),
     'drop_point_id': null, 
   });
+  return newProfile;
   }
 }

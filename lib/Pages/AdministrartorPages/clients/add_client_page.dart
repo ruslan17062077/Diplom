@@ -77,12 +77,12 @@ class _AddClientPageState extends State<AddClientPage> {
         drop_point: selectedDropPoint,
       );
 
-      await ClientService().signUpClient(updatedProfile, _passwordController.text);
+      final user =  await ClientService().signUpClient(updatedProfile, _passwordController.text);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Профиль создан")),
       );
 
-      Navigator.of(context).pop(updatedProfile);
+      Navigator.of(context).pop(user);
     }
   }
 

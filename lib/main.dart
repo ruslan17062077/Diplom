@@ -21,7 +21,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
     url: 'https://ijfnwqionlzjgqvwgbdd.supabase.co', // замените на ваш URL
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlqZm53cWlvbmx6amdxdndnYmRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMwNzE4NTMsImV4cCI6MjA1ODY0Nzg1M30.b3XR62XxzevBMAScC_sOjDH2-Fxko69uQTceNNO12zA',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlqZm53cWlvbmx6amdxdndnYmRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMwNzE4NTMsImV4cCI6MjA1ODY0Nzg1M30.b3XR62XxzevBMAScC_sOjDH2-Fxko69uQTceNNO12zA'
     
     // замените на ваш анонимный ключ
   );
